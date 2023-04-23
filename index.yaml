@@ -23,6 +23,20 @@ entries:
     version: 0.1.0
   springboot-service:
   - apiVersion: v2
+    appVersion: 0.2.0
+    created: "2023-04-23T00:15:14.066622001Z"
+    dependencies:
+    - name: outbox-service
+      repository: https://tapiasmoreno.github.io/helm-charts
+      version: 0.2.0
+    description: A Helm chart for Kubernetes
+    digest: 779f78cb214978e823c284d689cd22f23e63adec8b1b33e6a133de577d2b43e9
+    name: springboot-service
+    type: application
+    urls:
+    - https://github.com/tapiasmoreno/helm-charts/releases/download/springboot-service-0.2.0/springboot-service-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
     appVersion: 0.1.0
     created: "2023-04-22T17:42:50.475978556+02:00"
     description: A Helm chart for Kubernetes
@@ -32,4 +46,4 @@ entries:
     urls:
     - https://tapiasmoreno.github.io/helm-charts/springboot-service-0.1.0.tgz
     version: 0.1.0
-generated: "2023-04-23T00:02:40.086665584Z"
+generated: "2023-04-23T00:15:14.0666855Z"
