@@ -10,5 +10,5 @@ appVersion: "0.2.0"
 
 dependencies:
 - name: outbox-service
-  version: "0.1.0"
+  version: "0.2.0"
   repository: "https://tapiasmoreno.github.io/helm-charts"
