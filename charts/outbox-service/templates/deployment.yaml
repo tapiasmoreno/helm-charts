@@ -1,3 +1,4 @@
+{{- if or (not .Values.cronjob) (not .Values.cronjob.enabled) }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -5,9 +6,7 @@ metadata:
   labels:
     {{- include "outbox-service.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
-  {{- end }}
+  replicas: 1
   selector:
     matchLabels:
       {{- include "outbox-service.selectorLabels" . | nindent 6 }}
@@ -24,7 +23,6 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "outbox-service.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -59,3 +57,4 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+{{- end }}

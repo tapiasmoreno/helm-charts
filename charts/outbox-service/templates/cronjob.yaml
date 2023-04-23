@@ -1,0 +1,23 @@
+{{- if and .Values.cronjob .Values.cronjob.enabled }}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "outbox-service.fullname" . }}
+  labels:
+    {{- include "outbox-service.labels" . | nindent 4 }}
+spec:
+  schedule: {{ required "The schedule of CronJob is required" .Values.cronjob.schedule }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox:1.28
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster
+          restartPolicy: OnFailure
+{{- end }}
